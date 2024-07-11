@@ -31,7 +31,7 @@ MonoBehaviour:
     supportVolumetricClouds: 0
     supportLightLayers: 1
     renderingLayerMaskBuffer: 0
-    supportWater: 0
+    supportWater: 1
     waterSimulationResolution: 128
     supportWaterExclusion: 1
     supportWaterDeformation: 1
@@ -85,7 +85,7 @@ MonoBehaviour:
     supportProbeVolumeScenarioBlending: 1
     probeVolumeBlendingMemoryBudget: 128
     supportRayTracing: 1
-    supportVFXRayTracing: 0
+    supportVFXRayTracing: 1
     supportedRayTracingMode: 3
     lightLoopSettings:
       cookieAtlasSize: 512
@@ -168,7 +168,7 @@ MonoBehaviour:
       enabled: 1
       useMipBias: 0
       enableDLSS: 1
-      DLSSPerfQualitySetting: 0
+      DLSSPerfQualitySetting: 3
       DLSSInjectionPoint: 0
       DLSSUseOptimalSettings: 0
       DLSSSharpness: 0

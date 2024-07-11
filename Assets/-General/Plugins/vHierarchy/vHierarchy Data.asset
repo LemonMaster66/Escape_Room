@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - 8124e5870f4fd4c779e7a5f994e84ad1
+    - c464da8b19cfa9a4f962415682311144
     values:
     - goDatas_byGlobalId:
         keys:
@@ -31,6 +32,23 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1654252144-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-295094115-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1628479699-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-248278869-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-836643822-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-783537672-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-598843593-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-211991631-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-881760537-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1810306295-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-672408841-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1448703184-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-857052330-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-141662143-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-591701071-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-481781540-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1443468004-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1694096539-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-2098285562-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1393093651-0
         values:
         - colorIndex: 0
           iconNameOrGuid: DirectionalLight Icon
@@ -58,3 +76,43 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 9
           iconNameOrGuid: 
+        - colorIndex: 0
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 1
+          iconNameOrGuid: ScriptableObject Icon
+        - colorIndex: 1
+          iconNameOrGuid: TrailRenderer Icon
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 1
+          iconNameOrGuid: ScriptableObject Icon
+        - colorIndex: 1
+          iconNameOrGuid: TrailRenderer Icon
+        - colorIndex: 7
+          iconNameOrGuid: LightProbes Icon
+        - colorIndex: 2
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 2
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 2
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 2
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 2
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 2
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 1
+          iconNameOrGuid: ScriptableObject Icon
+        - colorIndex: 1
+          iconNameOrGuid: TrailRenderer Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-8740546017553086485-0
+        values:
+        - colorIndex: 1
+          iconNameOrGuid: TrailRenderer Icon
