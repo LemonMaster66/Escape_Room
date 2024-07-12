@@ -49,6 +49,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1694096539-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-2098285562-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1393093651-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-332025618-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-368531047-0
         values:
         - colorIndex: 0
           iconNameOrGuid: DirectionalLight Icon
@@ -110,9 +112,22 @@ MonoBehaviour:
           iconNameOrGuid: ScriptableObject Icon
         - colorIndex: 1
           iconNameOrGuid: TrailRenderer Icon
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 1
+          iconNameOrGuid: ScriptableObject Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-8740546017553086485-0
+        - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-7880742737075086079-0
+        - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-6089207674681726513-0
+        - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-8348651550556825933-0
         values:
         - colorIndex: 1
           iconNameOrGuid: TrailRenderer Icon
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+        - colorIndex: 0
+          iconNameOrGuid: Favorite

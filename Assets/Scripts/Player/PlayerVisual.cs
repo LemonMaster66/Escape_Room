@@ -6,8 +6,8 @@ public class PlayerVisual : MonoBehaviour
     public Player originPlayer;
     public Transform originPlayerTransform;
 
-    public Transform ShakeTransform;
     public Transform TiltTransform;
+    public Transform ShakeTransform;
 
 
     [Header("Properties")]
@@ -29,6 +29,6 @@ public class PlayerVisual : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.Slerp(transform.position, originPlayerTransform.position, positionSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, originPlayerTransform.position, positionSpeed * Time.deltaTime);
     }
 }

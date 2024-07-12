@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
         _instance = this;
 
         AddPlayers();
+        UpdatePlayerPositions();
     }
 
     void Update()
@@ -31,13 +32,17 @@ public class PlayerManager : MonoBehaviour
     public void HandleNumberPress(int number)
     {
         if(number > 6) return;
-        players[players.Count-1].MovePosition(PlatformManager._instance.GetPlatform(number-1).platformPos.position + Vector3.up * 0.5f);
+        players[players.Count-1].MovePosition(PlatformManager._instance.GetPlatform(number-1).platformPos.position);
     }
 
 
     public void UpdatePlayerPositions()
     {
-        
+        int PlatformCount = PlatformManager._instance.platforms.Count;
+        for (int i = PlatformCount-1; i >= 0; i--) 
+        {    
+            //p
+        }
     }
 
     public void AddPlayers()
