@@ -51,6 +51,10 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1393093651-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-332025618-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-368531047-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-453396388-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-780453504-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1756609139-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-993995840-0
         values:
         - colorIndex: 0
           iconNameOrGuid: DirectionalLight Icon
@@ -114,6 +118,14 @@ MonoBehaviour:
           iconNameOrGuid: TrailRenderer Icon
         - colorIndex: 5
           iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 1
+          iconNameOrGuid: ScriptableObject Icon
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 1
+          iconNameOrGuid: ScriptableObject Icon
         - colorIndex: 1
           iconNameOrGuid: ScriptableObject Icon
     - goDatas_byGlobalId:

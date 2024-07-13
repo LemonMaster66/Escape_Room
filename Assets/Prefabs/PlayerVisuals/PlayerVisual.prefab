@@ -198,6 +198,6 @@ MonoBehaviour:
   originPlayerTransform: {fileID: 0}
   TiltTransform: {fileID: 8643205688387177037}
   ShakeTransform: {fileID: 7923549165800311396}
-  positionSpeed: 5
+  positionSpeed: 6
   rotationSpeed: 20
   HeadObj: {fileID: 8348651550556825933}

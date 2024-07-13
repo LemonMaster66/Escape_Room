@@ -40,6 +40,10 @@ public class PlatformManager : MonoBehaviour
         List<Platform> sortedPlatforms = platformArray.OrderBy(p => p.OrderID).ToList();
         sortedPlatforms.Reverse();
 
-        foreach (Platform platform in sortedPlatforms) platforms.Add(platform, true);
+        foreach (Platform platform in sortedPlatforms)
+        {
+            platforms.Add(platform, true);
+            platform.UpdateValues();
+        }
     }
 }

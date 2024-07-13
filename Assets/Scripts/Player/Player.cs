@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public string  Name = "Name";
     public int     Index = 0;
+    public int     ListElement = 0;
     public int     Health = 5;
     public bool    Grounded = true;
 
@@ -39,37 +40,43 @@ public class Player : MonoBehaviour
         transform.position = pos;
     }
 
-    public void MoveToEmptySpot()
-    {
-
-    }
 
     [Button]
     public bool AvailableSlotCheck()
     {
-        Tools.ClearLogConsole();
         UpdateIndex();
 
         // Check if the next index is out of bounds
         int platformCount = PlatformManager._instance.platforms.Count;
         int nextIndex = platformCount - Index;
-        if (nextIndex < 0 || nextIndex >= platformCount)
-        {
-            Debug.Log("Out of Bounds");
-            return false;
-        }
+        if (nextIndex < 0 || nextIndex >= platformCount) return false;
 
         // Check if the next spot is empty
         bool isEmpty = PlayerManager._instance.players[nextIndex] == null;
-        Debug.Log(isEmpty ? "Empty" : "Taken");
-
         return isEmpty;
+    }
+
+    public void MoveToSlot(Platform platform)
+    {
+        int ListIndex = PlayerManager._instance.players.IndexOf(this);
+
+        if(AvailableSlotCheck())
+        {
+            PlayerManager._instance.players[ListIndex] = null;
+            PlayerManager._instance.players[ListIndex+1] = this;
+        }
+        
+        UpdateIndex();
+        currentPlatform = platform;
+        MovePosition(platform.platformPos.position);
     }
 
 
     public void UpdateIndex()
     {
-        int newIndex = PlayerManager._instance.players.IndexOf(this);
-        Index = PlatformManager._instance.platforms.Count - newIndex -1;
+        ListElement = PlayerManager._instance.players.IndexOf(this);
+
+        Index = PlatformManager._instance.platforms.Count - ListElement -1;
+        currentPlatform = PlatformManager._instance.GetPlatform(ListElement);
     }
 }

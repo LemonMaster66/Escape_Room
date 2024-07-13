@@ -10,11 +10,16 @@ public class Platform : MonoBehaviour
 
     void Awake()
     {
-        platformPos = Tools.GetChildren(transform)[0];
+        
     }
 
     void Update()
     {
         
+    }
+
+    public void UpdateValues()
+    {
+        platformPos = Tools.GetChildren(transform)[0];
     }
 }
