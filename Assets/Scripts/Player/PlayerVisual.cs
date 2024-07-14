@@ -18,9 +18,6 @@ public class PlayerVisual : MonoBehaviour
     [Header("Details")]
     public GameObject HeadObj;
 
-    private Vector3 rotationDelta;
-    private Vector3 movementDelta;
-
 
     void Awake()
     {
@@ -29,13 +26,16 @@ public class PlayerVisual : MonoBehaviour
 
     void Update()
     {
-        // Smooth Position
-        Vector3 targetPosition = Vector3.Lerp(transform.position, originPlayerTransform.position, positionSpeed * Time.deltaTime);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, 10 * Time.deltaTime);
+        if(originPlayerTransform != null)
+        {
+            // Smooth Position
+            Vector3 targetPosition = Vector3.Lerp(transform.position, originPlayerTransform.position, positionSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, 10 * Time.deltaTime);
 
-        // Smooth Rotation
-        float movementX = (transform.position.x - originPlayerTransform.position.x) * 200;
-        Quaternion targetRotation = Quaternion.Euler(TiltTransform.eulerAngles.x, Mathf.Clamp(movementX, -90, 90), TiltTransform.eulerAngles.z);
-        TiltTransform.rotation = Quaternion.Slerp(TiltTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            // Smooth Rotation
+            float movementX = (transform.position.x - originPlayerTransform.position.x) * 200;
+            Quaternion targetRotation = Quaternion.Euler(TiltTransform.eulerAngles.x, Mathf.Clamp(movementX, -90, 90), TiltTransform.eulerAngles.z);
+            TiltTransform.rotation = Quaternion.Slerp(TiltTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }

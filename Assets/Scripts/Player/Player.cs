@@ -1,5 +1,6 @@
 using System;
 using PalexUtilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
 
@@ -23,9 +24,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         gameObject.name = Name;
-        SpawnPlayerVisual();
     }
-    void SpawnPlayerVisual()
+    public void SpawnPlayerVisual()
     {
         GameObject visualObj = Instantiate(playerVisualPrefab, transform.position, Quaternion.identity, transform.parent);
         playerVisual = visualObj.GetComponent<PlayerVisual>();

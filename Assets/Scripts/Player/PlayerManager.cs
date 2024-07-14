@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     {
         _instance = this;
 
-        AddPlayers();
+        AddAllPlayers();
     }
 
     void Update()
@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour
     {
         if(context.started) HandleNumberPress(int.Parse(context.control.name));
     }
-
     public void HandleNumberPress(int number)
     {
         if(number > 6) return;
@@ -37,7 +36,6 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    //[Button]
     public IEnumerator UpdatePlayerPositions()
     {
         Tools.ClearLogConsole();
@@ -59,26 +57,51 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void AddPlayers()
+
+    public void AddAllPlayers()
     {
         Player[] playerArray = FindObjectsByType<Player>(FindObjectsSortMode.None);
         List<Player> sortedPlayers = playerArray.OrderBy(p => p.Index).ToList();
+        sortedPlayers.Reverse();
 
         int PlatformCount = PlatformManager._instance.platforms.Count;
         players = new List<Player>(PlatformCount);
 
+        for (int i = PlatformCount-1; i >= 0; i--) players.Add(null);
+        for (int i = PlatformCount-1; i >= 0; i--)
+            if (i < sortedPlayers.Count) AddPlayer(sortedPlayers[i]);
+    }
+
+    [Button]
+    public void AddPlayer(Player player)
+    {
+        int PlatformCount = PlatformManager._instance.platforms.Count;
+
         for (int i = PlatformCount-1; i >= 0; i--) 
         {    
-            if (i < sortedPlayers.Count) 
+            if (players[i] == null) 
             {
-                players.Add(sortedPlayers[i]);
-                sortedPlayers[i].UpdateIndex();
+                players[i] = player;
+                player.UpdateIndex();
+                player.MovePosition(PlatformManager._instance.GetPlatform(player.ListElement).platformPos.position);
+                player.SpawnPlayerVisual();
+                return;
             }
-            else players.Add(null);
         }
     }
+    [Button]
+    public void RemovePlayer(Player player)
+    {
+        int ListIndex = players.LastIndexOf(player);
+        players[ListIndex] = null;
+        StartCoroutine(UpdatePlayerPositions());
+
+        Destroy(player.playerVisual.gameObject);
+    }
+
     
-    public void OnValidate()
+    [OnValueChanged("players")]
+    public void OnPlayersChange()
     {
         if(!Application.isPlaying || Time.fixedTime == 0) return;
         StartCoroutine(UpdatePlayerPositions());
