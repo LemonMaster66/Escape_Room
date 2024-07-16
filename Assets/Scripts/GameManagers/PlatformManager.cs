@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PalexUtilities;
 using UnityEngine;
 using VInspector;
 
@@ -22,20 +23,13 @@ public class PlatformManager : MonoBehaviour
     }
 
 
-    public Platform GetPlatform(int index)
-    {
-        return platforms.ElementAt(index).Key;
-    }
-    public bool GetPlatformState(int index)
-    {
-        return platforms.ElementAt(index).Value;
-    }
+
     public Platform GetNearestEmptyPlatform()
     {
         for (int i = platforms.Count-1; i >= 0; i--)
         {
             Player player = PlayerManager._instance.players[i];
-            if(player == null) return GetPlatform(i);
+            if(player == null) return Tools.GetKey(platforms, i);
         }
         return null;
     }

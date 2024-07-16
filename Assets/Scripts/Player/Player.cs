@@ -77,6 +77,6 @@ public class Player : MonoBehaviour
         ListElement = PlayerManager._instance.players.IndexOf(this);
 
         Index = PlatformManager._instance.platforms.Count - ListElement -1;
-        currentPlatform = PlatformManager._instance.GetPlatform(ListElement);
+        currentPlatform = Tools.GetKey(PlatformManager._instance.platforms, ListElement);
     }
 }

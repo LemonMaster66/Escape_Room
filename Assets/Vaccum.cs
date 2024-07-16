@@ -1,4 +1,5 @@
 using System.Collections;
+using PalexUtilities;
 using UnityEngine;
 using VInspector;
 
@@ -9,8 +10,8 @@ public class Vaccum : MonoBehaviour
 
     [Space(5)]
 
-    public Player[] playerQueue;
     [ReadOnly] public Platform targetPlatform;
+    public SerializedDictionary<Player, bool> playerQueue;
 
 
     [HideInInspector] public static Vaccum _instance;
@@ -30,7 +31,8 @@ public class Vaccum : MonoBehaviour
 
     public void NextMovement()
     {
-        Player player = playerQueue[0];
+        Player player = Tools.GetKey(playerQueue, 0);
+        
         if(player != null)
         {
             MoveToSlot(player.Index);
@@ -47,7 +49,7 @@ public class Vaccum : MonoBehaviour
     {
         if(Index > PlatformManager._instance.platforms.Count) return;
 
-        targetPlatform = PlatformManager._instance.GetPlatform(Index);
+        targetPlatform = Tools.GetKey(PlatformManager._instance.platforms, Index);
         MoveToPosition(new Vector3(targetPlatform.platformPos.position.x, 3, 0));
     }
     public void MoveToPosition(Vector3 pos)

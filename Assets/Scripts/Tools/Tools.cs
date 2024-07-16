@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
@@ -39,7 +40,7 @@ namespace PalexUtilities
         
 
 
-        #region Lists / Arrays
+        #region Lists / Arrays / Dictionaries
             
 
             public static T[] RemoveDuplicates<T>(T[] arr)
@@ -84,6 +85,23 @@ namespace PalexUtilities
                 }
             }
 
+
+            public static TKey GetKey<TKey, TValue>(Dictionary<TKey, TValue> dictionary, int index)
+            {
+                if (index < 0 || index >= dictionary.Count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+
+                return dictionary.ElementAt(index).Key;
+            }
+
+            public static TValue GetValue<TKey, TValue>(Dictionary<TKey, TValue> dictionary, int index)
+            {
+                if (index < 0 || index >= dictionary.Count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+
+                return dictionary.ElementAt(index).Value;
+            }
+            
 
         #endregion
 
