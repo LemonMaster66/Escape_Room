@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - globalId:
+      globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-964526034-0
+    _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 0}
+    isSceneGameObject: 1
+    isAsset: 0
+    id: 1059098797
+  - globalId:
       globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-672408841-0
     _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

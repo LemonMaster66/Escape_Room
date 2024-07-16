@@ -30,6 +30,15 @@ public class PlatformManager : MonoBehaviour
     {
         return platforms.ElementAt(index).Value;
     }
+    public Platform GetNearestEmptyPlatform()
+    {
+        for (int i = platforms.Count-1; i >= 0; i--)
+        {
+            Player player = PlayerManager._instance.players[i];
+            if(player == null) return GetPlatform(i);
+        }
+        return null;
+    }
 
 
     public void AddPlatforms()

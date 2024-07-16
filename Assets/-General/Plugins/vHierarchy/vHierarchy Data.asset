@@ -55,6 +55,12 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-780453504-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1756609139-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-993995840-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-964526034-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-620311409-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1628742386-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1072875112-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1234093522-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-244599911-0
         values:
         - colorIndex: 0
           iconNameOrGuid: DirectionalLight Icon
@@ -128,6 +134,18 @@ MonoBehaviour:
           iconNameOrGuid: ScriptableObject Icon
         - colorIndex: 1
           iconNameOrGuid: ScriptableObject Icon
+        - colorIndex: 7
+          iconNameOrGuid: Settings Icon
+        - colorIndex: 1
+          iconNameOrGuid: TrailRenderer Icon
+        - colorIndex: 1
+          iconNameOrGuid: PreMatCube
+        - colorIndex: 7
+          iconNameOrGuid: ScriptableObject Icon
+        - colorIndex: 8
+          iconNameOrGuid: Favorite
+        - colorIndex: 3
+          iconNameOrGuid: AudioReverbZone Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-8740546017553086485-0

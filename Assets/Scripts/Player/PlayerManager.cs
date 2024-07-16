@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager _instance;
 
     public List<Player> players;
+    public List<Player> playerStorage;
 
     void Awake()
     {
@@ -25,14 +26,18 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public void OnNumberPress(InputAction.CallbackContext context)
+    public void OnPlayerToggle(InputAction.CallbackContext context)
     {
-        if(context.started) HandleNumberPress(int.Parse(context.control.name));
-    }
-    public void HandleNumberPress(int number)
-    {
-        if(number > 6) return;
-        players[players.Count-1].MovePosition(PlatformManager._instance.GetPlatform(number-1).platformPos.position);
+        if(context.started)
+        {
+            bool isUp = int.TryParse(context.control.name, out int number);
+            Player player = GetPlayer(int.Parse(context.action.name)-1);
+
+            Tools.ClearLogConsole();
+            Debug.Log(player + ": " + (isUp ? "Up" : "Down"));
+
+
+        }
     }
 
 
@@ -96,7 +101,19 @@ public class PlayerManager : MonoBehaviour
         players[ListIndex] = null;
         StartCoroutine(UpdatePlayerPositions());
 
+        //Replace with Animation
         Destroy(player.playerVisual.gameObject);
+    }
+
+    public Player GetPlayer(int index)
+    {
+        Player[] playerArray = FindObjectsByType<Player>(FindObjectsSortMode.None);
+        foreach(Player player in playerArray)
+        {
+            player.UpdateIndex();
+            if(player != null && player.Index == index) return player;
+        }
+        return null;
     }
 
     

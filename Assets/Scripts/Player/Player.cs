@@ -1,6 +1,5 @@
 using System;
 using PalexUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
 
@@ -32,6 +31,8 @@ public class Player : MonoBehaviour
 
         playerVisual.originPlayer = this;
         playerVisual.originPlayerTransform = transform;
+
+        
     }
 
 
@@ -41,7 +42,6 @@ public class Player : MonoBehaviour
     }
 
 
-    [Button]
     public bool AvailableSlotCheck()
     {
         UpdateIndex();

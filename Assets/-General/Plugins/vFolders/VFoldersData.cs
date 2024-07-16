@@ -35,8 +35,7 @@ namespace VFolders
         {
             public override void OnInspectorGUI()
             {
-                var style = EditorStyles.label;
-                style.wordWrap = true;
+                var style = new GUIStyle(EditorStyles.label) { wordWrap = true };
 
 
                 void normal()

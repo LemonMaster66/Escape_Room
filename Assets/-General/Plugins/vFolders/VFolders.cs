@@ -667,7 +667,7 @@ namespace VFolders
                                                tree.treeViewController?.GetMemberValue("state").GetMemberValue<List<int>>("selectedIDs")
 #endif
                                  .Select(id => tree.treeViewController.InvokeMethod("FindItem", id)                                                 // todo to somethinf else (finditem reveals selected item for some reason)
-                                                                      .GetPropertyValue<string>("Guid", exceptionIfNotFound: false))
+                                                                      ?.GetPropertyValue<string>("Guid", exceptionIfNotFound: false))
                                                                       .Where(r => r != null);
 
 
@@ -2019,7 +2019,7 @@ namespace VFolders
 
 
 
-        const string version = "2.0.10";
+        const string version = "2.0.11";
 
     }
 }

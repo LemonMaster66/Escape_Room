@@ -1781,7 +1781,20 @@ namespace VHierarchy
 
 
 
-        static EditorWindow hierarchyWindow => _hierarchyWindow != null ? _hierarchyWindow : _hierarchyWindow = Resources.FindObjectsOfTypeAll(t_SceneHierarchyWindow).FirstOrDefault() as EditorWindow;
+        static EditorWindow hierarchyWindow
+        {
+            get
+            {
+                if (_hierarchyWindow != null && _hierarchyWindow.GetType() != t_SceneHierarchyWindow) // happens on 2022.3.22f1 with enter playmode options on
+                    _hierarchyWindow = null;
+
+                if (_hierarchyWindow == null)
+                    _hierarchyWindow = Resources.FindObjectsOfTypeAll(t_SceneHierarchyWindow).FirstOrDefault() as EditorWindow;
+
+                return _hierarchyWindow;
+
+            }
+        }
         static EditorWindow _hierarchyWindow;
 
         static object treeViewController => hierarchyWindow?.GetFieldValue("m_SceneHierarchy").GetFieldValue("m_TreeView"); // recreated on prefab mode enter/exit
@@ -1793,7 +1806,7 @@ namespace VHierarchy
 
 
 
-        public const string version = "2.0.16";
+        public const string version = "2.0.17";
 
     }
 }
