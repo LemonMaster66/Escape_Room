@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrderID: 2
+  ListElement: 0
   platformPos: {fileID: 0}
 --- !u!65 &141662145
 BoxCollider:
@@ -888,6 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrderID: 4
+  ListElement: 0
   platformPos: {fileID: 0}
 --- !u!65 &481781542
 BoxCollider:
@@ -1011,6 +1013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrderID: 3
+  ListElement: 0
   platformPos: {fileID: 0}
 --- !u!65 &591701073
 BoxCollider:
@@ -1495,6 +1498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrderID: 1
+  ListElement: 0
   platformPos: {fileID: 0}
 --- !u!65 &857052332
 BoxCollider:
@@ -1823,8 +1827,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restPosition: {fileID: 244599912}
   vaccumVisual: {fileID: 620311411}
-  playerQueue: []
   targetPlatform: {fileID: 0}
+  playerQueue:
+    serializedKvps: []
+    dividerPos: 0.43610084
 --- !u!1 &993995840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrderID: 5
+  ListElement: 0
   platformPos: {fileID: 0}
 --- !u!65 &1443468006
 BoxCollider:
@@ -2153,6 +2160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrderID: 0
+  ListElement: 0
   platformPos: {fileID: 0}
 --- !u!65 &1448703186
 BoxCollider:

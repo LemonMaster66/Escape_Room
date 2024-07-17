@@ -1,4 +1,5 @@
 using DG.Tweening;
+using PalexUtilities;
 using UnityEngine;
 
 public class VaccumVisual : MonoBehaviour
@@ -27,8 +28,7 @@ public class VaccumVisual : MonoBehaviour
             Moving = false;
             transform.DOPunchPosition(new Vector3(0.25f, 0, 0), 0.35f, 15, 0.8f);
 
-            Player player = PlayerManager._instance.GetPlayer(originVaccum.targetPlatform.OrderID);
-            StartCoroutine(originVaccum.SuccPlayer(player));
+            originVaccum.NextAction();
         }
     }
 }

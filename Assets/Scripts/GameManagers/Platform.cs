@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using PalexUtilities;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     public int OrderID;
+    public int ListElement;
     [HideInInspector] public Transform platformPos;
 
     void Awake()
@@ -21,5 +23,6 @@ public class Platform : MonoBehaviour
     public void UpdateValues()
     {
         platformPos = Tools.GetChildren(transform)[0];
+        ListElement = PlatformManager._instance.platforms.Keys.ToList().IndexOf(this);
     }
 }
