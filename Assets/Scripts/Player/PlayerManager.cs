@@ -33,10 +33,7 @@ public class PlayerManager : MonoBehaviour
             bool isUp = int.TryParse(context.control.name, out int number);
             Player player = GetPlayer(int.Parse(context.action.name)-1);
 
-            Tools.ClearLogConsole();
-            Debug.Log(player + ": " + (isUp ? "Up" : "Down"));
-
-
+            if(isUp != player.isSafe) VacuumManager._instance.AddPlayer(player, isUp);
         }
     }
 
@@ -52,7 +49,7 @@ public class PlayerManager : MonoBehaviour
             Player player = players[i];
             if(player != null)
             {
-                while(player.AvailableSlotCheck())
+                while(player.AvailableSlotCheck(players))
                 {
                     player.MoveToSlot(Tools.GetKey(PlatformManager._instance.platforms, i+1));
                 }
@@ -97,8 +94,8 @@ public class PlayerManager : MonoBehaviour
     [Button]
     public void RemovePlayer(Player player)
     {
-        int ListIndex = players.LastIndexOf(player);
-        players[ListIndex] = null;
+        player.UpdateIndex();
+        players[player.ListElement] = null;
         StartCoroutine(UpdatePlayerPositions());
 
         //Replace with Animation
@@ -110,8 +107,11 @@ public class PlayerManager : MonoBehaviour
         Player[] playerArray = FindObjectsByType<Player>(FindObjectsSortMode.None);
         foreach(Player player in playerArray)
         {
-            player.UpdateIndex();
-            if(player != null && player.Index == index) return player;
+            if(player != null)
+            {
+                player.UpdateIndex();
+                if(player.Index == index) return player;
+            }
         }
         return null;
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PalexUtilities;
 using UnityEngine;
 using VInspector;
@@ -8,9 +9,13 @@ public class Player : MonoBehaviour
 {
     public string  Name = "Name";
     public int     Index = 0;
-    public int     ListElement = 0;
     public int     Health = 5;
-    public bool    Grounded = true;
+    public bool    isSafe = false;
+
+    [Space(5)]
+
+    [ReadOnly] public int ListIndex = 0;
+    [ReadOnly] public int ListElement = 0;
 
     [Space(8)]
 
@@ -31,8 +36,6 @@ public class Player : MonoBehaviour
 
         playerVisual.originPlayer = this;
         playerVisual.originPlayerTransform = transform;
-
-        
     }
 
 
@@ -42,17 +45,17 @@ public class Player : MonoBehaviour
     }
 
 
-    public bool AvailableSlotCheck()
+    public bool AvailableSlotCheck(List<Player> playerList)
     {
         UpdateIndex();
 
         // Check if the next index is out of bounds
-        int platformCount = PlatformManager._instance.platforms.Count;
-        int nextIndex = platformCount - Index;
+        int platformCount = playerList.Count;
+        int nextIndex = platformCount - ListIndex;
         if (nextIndex < 0 || nextIndex >= platformCount) return false;
 
         // Check if the next spot is empty
-        bool isEmpty = PlayerManager._instance.players[nextIndex] == null;
+        bool isEmpty = playerList[nextIndex] == null;
         return isEmpty;
     }
 
@@ -60,7 +63,7 @@ public class Player : MonoBehaviour
     {
         int ListIndex = PlayerManager._instance.players.IndexOf(this);
 
-        if(AvailableSlotCheck())
+        if(AvailableSlotCheck(PlayerManager._instance.players))
         {
             PlayerManager._instance.players[ListIndex] = null;
             PlayerManager._instance.players[ListIndex+1] = this;
@@ -75,8 +78,9 @@ public class Player : MonoBehaviour
     public void UpdateIndex()
     {
         ListElement = PlayerManager._instance.players.IndexOf(this);
+        if(ListElement == -1) return;
 
-        Index = PlatformManager._instance.platforms.Count - ListElement -1;
+        ListIndex = PlatformManager._instance.platforms.Count - ListElement -1;
         currentPlatform = Tools.GetKey(PlatformManager._instance.platforms, ListElement);
     }
 }

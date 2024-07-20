@@ -16,6 +16,7 @@ MonoBehaviour:
     keys:
     - 8124e5870f4fd4c779e7a5f994e84ad1
     - c464da8b19cfa9a4f962415682311144
+    - 78e558aad47dc7f4fb9b9e2bd5b48b57
     values:
     - goDatas_byGlobalId:
         keys:
@@ -61,6 +62,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1072875112-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1234093522-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-244599911-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-688622131-0
         values:
         - colorIndex: 0
           iconNameOrGuid: DirectionalLight Icon
@@ -146,6 +148,8 @@ MonoBehaviour:
           iconNameOrGuid: Favorite
         - colorIndex: 3
           iconNameOrGuid: AudioReverbZone Icon
+        - colorIndex: 1
+          iconNameOrGuid: ParticleSystem Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-8740546017553086485-0
@@ -161,3 +165,9 @@ MonoBehaviour:
           iconNameOrGuid: Canvas Icon
         - colorIndex: 0
           iconNameOrGuid: Favorite
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-78e558aad47dc7f4fb9b9e2bd5b48b57-3737693292859104272-0
+        values:
+        - colorIndex: 1
+          iconNameOrGuid: TrailRenderer Icon

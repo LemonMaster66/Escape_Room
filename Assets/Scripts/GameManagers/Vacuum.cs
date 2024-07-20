@@ -3,18 +3,19 @@ using PalexUtilities;
 using UnityEngine;
 using VInspector;
 
-public class Vaccum : MonoBehaviour
+public class Vacuum : MonoBehaviour
 {
     public Transform restPosition;
-    public VaccumVisual vaccumVisual;
+    public VacuumVisual VacuumVisual;
 
     [Space(5)]
 
+    [ReadOnly] public bool Active;
+    [ReadOnly] public bool Processing;
+    [Space(3)]
     [ReadOnly] public Platform targetPlatform;
-    public SerializedDictionary<Player, bool> playerQueue;
-
-
-    [HideInInspector] public static Vaccum _instance;
+    [ReadOnly] public Vector3 lastPos;
+    [HideInInspector] public static Vacuum _instance;
 
 
     void Awake()
@@ -22,22 +23,14 @@ public class Vaccum : MonoBehaviour
         _instance = this;
     }
 
-    void Update()
-    {
-        
-    }
-
-
 
     [Button]
     public void NextMovement()
     {
-        if(playerQueue.Count > 0)
+        if(VacuumManager._instance.playerQueue.Count > 0)
         {
-            Player player = Tools.GetKey(playerQueue, 0);
-            bool Action = Tools.GetValue(playerQueue, 0);
-
-            MoveToSlot(player.ListElement);
+            Player player = Tools.GetKey(VacuumManager._instance.playerQueue, 0);
+            bool Action = Tools.GetValue(VacuumManager._instance.playerQueue, 0);
 
             if(Action) MoveToSlot(player.ListElement);
             else       MoveToSlot(PlatformManager._instance.GetNearestEmptyPlatform().ListElement);
@@ -49,10 +42,10 @@ public class Vaccum : MonoBehaviour
     }
     public void NextAction()
     {
-        if(playerQueue.Count != 0)
+        if(VacuumManager._instance.playerQueue.Count != 0)
         {
-            Player player = Tools.GetKey(playerQueue, 0);
-            bool Action = Tools.GetValue(playerQueue, 0);
+            Player player = Tools.GetKey(VacuumManager._instance.playerQueue, 0);
+            bool Action = Tools.GetValue(VacuumManager._instance.playerQueue, 0);
 
             if(Action) StartCoroutine(SuccPlayer(player));
             else       StartCoroutine(DepositPlayer(player));
@@ -69,34 +62,47 @@ public class Vaccum : MonoBehaviour
     }
     public void MoveToPosition(Vector3 pos)
     {
+        lastPos = transform.position;
         transform.position = new Vector3(pos.x, transform.position.y, transform.position.z);
-        vaccumVisual.Moving = true;
+        VacuumVisual.Moving = true;
     }
 
 
     public IEnumerator SuccPlayer(Player player)
     {
+        if(Processing) yield break;
+        Processing = true;
+
         yield return new WaitForSeconds(0.5f);
         
+        player.isSafe = true;
         PlayerManager._instance.RemovePlayer(player);
-        playerQueue.Remove(player);
+        VacuumManager._instance.playerQueue.Remove(player);
+        SafeZone._instance.AddPlayer(player);
 
         yield return new WaitForSeconds(0.5f);
 
         NextMovement();
+        Processing = false;
 
         yield return null;
     }
     public IEnumerator DepositPlayer(Player player)
     {
+        if(Processing) yield break;
+        Processing = true;
+
         yield return new WaitForSeconds(0.5f);
 
+        player.isSafe = false;
+        VacuumManager._instance.playerQueue.Remove(player);
+        SafeZone._instance.RemovePlayer(player);
         PlayerManager._instance.AddPlayer(player);
-        playerQueue.Remove(player);
 
         yield return new WaitForSeconds(0.5f);
 
         NextMovement();
+        Processing = false;
 
         yield return null;
     }
