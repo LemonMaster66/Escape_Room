@@ -29,11 +29,10 @@ public class Vacuum : MonoBehaviour
     {
         if(VacuumManager._instance.playerQueue.Count > 0)
         {
-            Player player = Tools.GetKey(VacuumManager._instance.playerQueue, 0);
-            bool Action = Tools.GetValue(VacuumManager._instance.playerQueue, 0);
+            QueuePlayer queuePlayer = VacuumManager._instance.playerQueue[0];
 
-            if(Action) MoveToSlot(player.ListElement);
-            else       MoveToSlot(PlatformManager._instance.GetNearestEmptyPlatform().ListElement);
+            if(queuePlayer.Action) MoveToSlot(queuePlayer.Player.ListElement);
+            else                   MoveToSlot(PlatformManager._instance.GetNearestEmptyPlatform().ListElement);
         }
         else
         {
@@ -44,11 +43,10 @@ public class Vacuum : MonoBehaviour
     {
         if(VacuumManager._instance.playerQueue.Count != 0)
         {
-            Player player = Tools.GetKey(VacuumManager._instance.playerQueue, 0);
-            bool Action = Tools.GetValue(VacuumManager._instance.playerQueue, 0);
+            QueuePlayer queuePlayer = VacuumManager._instance.playerQueue[0];
 
-            if(Action) StartCoroutine(SuccPlayer(player));
-            else       StartCoroutine(DepositPlayer(player));
+            if(queuePlayer.Action) StartCoroutine(SuccPlayer(queuePlayer.Player));
+            else                   StartCoroutine(DepositPlayer(queuePlayer.Player));
         }
     }
 
@@ -62,7 +60,7 @@ public class Vacuum : MonoBehaviour
     }
     public void MoveToPosition(Vector3 pos)
     {
-        lastPos = transform.position;
+        if(!VacuumVisual.Moving) lastPos = transform.position;
         transform.position = new Vector3(pos.x, transform.position.y, transform.position.z);
         VacuumVisual.Moving = true;
     }
@@ -75,10 +73,10 @@ public class Vacuum : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         
-        player.isSafe = true;
         PlayerManager._instance.RemovePlayer(player);
-        VacuumManager._instance.playerQueue.Remove(player);
+        VacuumManager._instance.playerQueue.RemoveAt(0);
         SafeZone._instance.AddPlayer(player);
+        player.isSafe = true;
 
         yield return new WaitForSeconds(0.5f);
 
@@ -89,13 +87,13 @@ public class Vacuum : MonoBehaviour
     }
     public IEnumerator DepositPlayer(Player player)
     {
-        if(Processing) yield break;
+        if(Processing || player == null) yield break;
         Processing = true;
 
         yield return new WaitForSeconds(0.5f);
 
         player.isSafe = false;
-        VacuumManager._instance.playerQueue.Remove(player);
+        VacuumManager._instance.playerQueue.RemoveAt(0);
         SafeZone._instance.RemovePlayer(player);
         PlayerManager._instance.AddPlayer(player);
 

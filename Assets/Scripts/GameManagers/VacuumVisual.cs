@@ -9,7 +9,7 @@ public class VacuumVisual : MonoBehaviour
 
 
     [Header("Properties")]
-    public float positionSpeed = 30;
+    public float positionSpeed = 20;
     public bool Moving;
 
 

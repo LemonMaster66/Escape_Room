@@ -8,7 +8,7 @@ using VInspector.Libs;
 
 public class VacuumManager : MonoBehaviour
 {
-    public SerializedDictionary<Player, bool> playerQueue;
+    public List<QueuePlayer> playerQueue;
 
     [HideInInspector] public static VacuumManager _instance;
 
@@ -28,15 +28,16 @@ public class VacuumManager : MonoBehaviour
 
     public void AddPlayer(Player player, bool state)
     {
-        // If that Player is Already In the Dictionary
-        if(playerQueue.ContainsKey(player))
+        // Check If that Player is Already In the List
+        foreach(QueuePlayer queuePlayer in playerQueue)
         {
-            int playerIndex = playerQueue.Keys.ToList().IndexOf(player);
-            bool value = Tools.GetValue(playerQueue, playerIndex);
-            
-            if(value != state) playerQueue.Remove(player);
+            if(queuePlayer != null)
+                if(queuePlayer.Player == player && queuePlayer.Action == state) return;
         }
-        else playerQueue.Add(player, state);
+
+        QueuePlayer newQueuePlayer = new QueuePlayer(player, state);
+        playerQueue.Add(newQueuePlayer);
+
         UpdateVacuum();
     }
 }

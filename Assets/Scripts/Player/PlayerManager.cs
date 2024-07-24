@@ -11,7 +11,6 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager _instance;
 
     public List<Player> players;
-    public List<Player> playerStorage;
 
     void Awake()
     {
@@ -33,14 +32,44 @@ public class PlayerManager : MonoBehaviour
             bool isUp = int.TryParse(context.control.name, out int number);
             Player player = GetPlayer(int.Parse(context.action.name)-1);
 
-            if(isUp != player.isSafe) VacuumManager._instance.AddPlayer(player, isUp);
+            if(ValidCommand(player, isUp)) VacuumManager._instance.AddPlayer(player, isUp);
         }
+    }
+    public bool ValidCommand(Player player, bool action)
+    {
+        bool foundPlayer = false;
+
+        // for Each Existing Instruction
+        foreach(QueuePlayer queuePlayer in VacuumManager._instance.playerQueue)
+        {
+            // That Player is Already In the List
+            if(queuePlayer.Player == player)
+            {
+                foundPlayer = true;
+
+                // That Exact Instruction is Already In the List
+                if(queuePlayer.Action == action) return false;
+
+                // Cannot input DOWN on a Grounded player, Unless theres Already an UP Action Queued... and vice versa...
+                if((action == player.isSafe) && queuePlayer.Action == action) return false;
+            }
+        }
+        
+        // That Player is Not already in the List
+        if(!foundPlayer)
+        {
+            // Cannot input DOWN on a Grounded player... and vice versa...
+            if(action == player.isSafe) return false;
+        }
+
+
+        // If None of these are the Case, Return True
+        return true;
     }
 
 
     public IEnumerator UpdatePlayerPositions()
     {
-        Tools.ClearLogConsole();
         int PlatformCount = PlatformManager._instance.platforms.Count;
         if(PlatformCount == 0 || PlatformManager._instance == null) yield break;
 
@@ -49,7 +78,7 @@ public class PlayerManager : MonoBehaviour
             Player player = players[i];
             if(player != null)
             {
-                while(player.AvailableSlotCheck(players))
+                while(player.AvailableSlotCheck())
                 {
                     player.MoveToSlot(Tools.GetKey(PlatformManager._instance.platforms, i+1));
                 }
@@ -74,7 +103,6 @@ public class PlayerManager : MonoBehaviour
             if (i < sortedPlayers.Count) AddPlayer(sortedPlayers[i]);
     }
 
-    [Button]
     public void AddPlayer(Player player)
     {
         int PlatformCount = PlatformManager._instance.platforms.Count;
@@ -91,7 +119,6 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    [Button]
     public void RemovePlayer(Player player)
     {
         player.UpdateIndex();
