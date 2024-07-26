@@ -93,7 +93,6 @@ namespace PalexUtilities
 
                 return dictionary.ElementAt(index).Key;
             }
-
             public static TValue GetValue<TKey, TValue>(Dictionary<TKey, TValue> dictionary, int index)
             {
                 if (index < 0 || index >= dictionary.Count)

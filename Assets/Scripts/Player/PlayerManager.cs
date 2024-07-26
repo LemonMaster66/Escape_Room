@@ -80,9 +80,9 @@ public class PlayerManager : MonoBehaviour
             {
                 while(player.AvailableSlotCheck())
                 {
-                    player.MoveToSlot(Tools.GetKey(PlatformManager._instance.platforms, i+1));
+                    player.MoveToSlot(PlatformManager._instance.platforms[i+1].Platform);
                 }
-                player.MoveToSlot(Tools.GetKey(PlatformManager._instance.platforms, player.ListElement));
+                player.MoveToSlot(PlatformManager._instance.platforms[player.ListElement].Platform);
             }
             yield return new WaitForSeconds(0.075f);
         }
@@ -113,11 +113,13 @@ public class PlayerManager : MonoBehaviour
             {
                 players[i] = player;
                 player.UpdateIndex();
-                player.MovePosition(Tools.GetKey(PlatformManager._instance.platforms, player.ListElement).platformPos.position);
+                player.MovePosition(PlatformManager._instance.platforms[player.ListElement].Platform.transform.position);
                 player.SpawnPlayerVisual();
                 return;
             }
         }
+
+        PlatformManager._instance.UpdatePlatformStates();
     }
     public void RemovePlayer(Player player)
     {

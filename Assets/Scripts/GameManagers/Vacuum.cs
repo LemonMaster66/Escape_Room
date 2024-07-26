@@ -55,8 +55,8 @@ public class Vacuum : MonoBehaviour
     {
         if(Index > PlatformManager._instance.platforms.Count) return;
 
-        targetPlatform = Tools.GetKey(PlatformManager._instance.platforms, Index);
-        MoveToPosition(new Vector3(targetPlatform.platformPos.position.x, 3, 0));
+        targetPlatform = PlatformManager._instance.platforms[Index].Platform;
+        MoveToPosition(new Vector3(targetPlatform.transform.position.x, 3, 0));
     }
     public void MoveToPosition(Vector3 pos)
     {
@@ -80,6 +80,8 @@ public class Vacuum : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        PlatformManager._instance.UpdatePlatformStates();
+        
         NextMovement();
         Processing = false;
 
@@ -96,6 +98,8 @@ public class Vacuum : MonoBehaviour
         VacuumManager._instance.playerQueue.RemoveAt(0);
         SafeZone._instance.RemovePlayer(player);
         PlayerManager._instance.AddPlayer(player);
+
+        PlatformManager._instance.UpdatePlatformStates();
 
         yield return new WaitForSeconds(0.5f);
 

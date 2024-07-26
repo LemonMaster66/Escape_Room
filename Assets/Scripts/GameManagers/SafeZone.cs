@@ -31,7 +31,7 @@ public class SafeZone : MonoBehaviour
             if(player != null)
             {
                 while(player.AvailableSlotCheck())
-                    player.MoveToSlot(Tools.GetKey(PlatformManager._instance.platforms, i+1));
+                    player.MoveToSlot(PlatformManager._instance.platforms[i+1].Platform);
             }
         }
     }

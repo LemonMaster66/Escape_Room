@@ -3,12 +3,13 @@ using System.Linq;
 using PalexUtilities;
 using UnityEngine;
 using VInspector;
+using VInspector.Libs;
 
 public class PlatformManager : MonoBehaviour
 {
     public static PlatformManager _instance;
 
-    public SerializedDictionary<Platform, bool> platforms;
+    public List<PlatformElement> platforms;
 
 
     void Awake()
@@ -23,21 +24,17 @@ public class PlatformManager : MonoBehaviour
     }
 
 
-
-    public Platform GetNearestEmptyPlatform()
+    [Button]
+    public void UpdatePlatformStates()
     {
-        for (int i = platforms.Count-1; i >= 0; i--)
-        {
-            Player player = PlayerManager._instance.players[i];
-            if(player == null) return Tools.GetKey(platforms, i);
-        }
-        return null;
+        foreach (PlatformElement platform in platforms)
+            platform.Platform.UpdateState();
     }
 
 
     public void AddPlatforms()
     {
-        platforms = new SerializedDictionary<Platform, bool>();
+        platforms = new List<PlatformElement>();
 
         Platform[] platformArray = FindObjectsByType<Platform>(FindObjectsSortMode.None);
         List<Platform> sortedPlatforms = platformArray.OrderBy(p => p.OrderID).ToList();
@@ -45,8 +42,19 @@ public class PlatformManager : MonoBehaviour
 
         foreach (Platform platform in sortedPlatforms)
         {
-            platforms.Add(platform, true);
+            PlatformElement platformElement = new PlatformElement(platform, true);
+            platforms.Add(platformElement);
             platform.UpdateValues();
         }
+        foreach (PlatformElement platform in platforms)
+            platform.Platform.UpdateValues();
+    }
+
+    public Platform GetNearestEmptyPlatform()
+    {
+        for (int i = platforms.Count-1; i >= 0; i--)
+            if(!platforms[i].State) return platforms[i].Platform;
+            
+        return null;
     }
 }

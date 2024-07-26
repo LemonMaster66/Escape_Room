@@ -22,6 +22,9 @@ namespace VInspector
         {
             void masks()
             {
+                if (!curEvent.isRepaint) return;
+
+
                 Color backgroundColor;
 
                 float buttonMask_xMin;
@@ -56,17 +59,11 @@ namespace VInspector
                         defaultButtonCount = customButtonCount = 0;
 
 
-
-
                     buttonMask_xMax = headerRect.xMax - buttonsOffsetRight - defaultButtonCount * buttonSize;
-
-
                     buttonMask_xMin = headerRect.xMax - buttonsOffsetRight - (defaultButtonCount + customButtonCount).Max(3) * buttonSize;
 
-
-
-
                 }
+
 
                 void hideArrow()
                 {
@@ -116,6 +113,7 @@ namespace VInspector
                     rect.DrawCurtainLeft(backgroundColor);
 
                 }
+
 
 
                 set_backgroundColor();
@@ -276,6 +274,38 @@ namespace VInspector
 
             }
 
+            void blockClicksOnDefaultButtons()
+            {
+                var buttonCount = VInspectorMenu.componentButtons_defaultButtonsCount;
+
+                if (VInspectorMenu.copyPasteButtonsEnabled)
+                    buttonCount++;
+
+                if (VInspectorMenu.saveInPlaymodeButtonEnabled && Application.isPlaying)
+                    buttonCount++;
+
+                if (buttonCount >= 3) return;
+
+
+
+                var blockRect_xMin = headerRect.xMax - buttonsOffsetRight - 3 * buttonSize;
+                var blockRect_xMax = headerRect.xMax - buttonsOffsetRight - buttonCount * buttonSize;
+
+                var blockRect = headerRect.AddHeightFromMid(-2).SetX(blockRect_xMin).SetXMax(blockRect_xMax);
+
+
+
+                SetGUIColor(Color.clear);
+
+                if (IconButton(blockRect, ""))
+                    if (curEvent.holdingShift)
+                        VInspector.CollapseOtherComponents(component, window);
+                    else
+                        VInspector.ToggleComponentExpanded(component, window);
+
+                ResetGUIColor();
+
+            }
             void expandWithAnimation()
             {
                 if (!mousePressedOnBackground) return;
@@ -430,8 +460,9 @@ namespace VInspector
             copyPasteButton();
             saveInPlaymodeButton();
 
-            createComponentWindow();
+            blockClicksOnDefaultButtons();
             expandWithAnimation();
+            createComponentWindow();
 
             set_mousePressedOnBackground();
             set_hoveredComponentHeader();

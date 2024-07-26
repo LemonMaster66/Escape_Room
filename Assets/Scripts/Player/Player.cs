@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         
         UpdateIndex();
         currentPlatform = platform;
-        MovePosition(platform.platformPos.position);
+        MovePosition(platform.transform.position);
     }
 
 
@@ -85,6 +85,6 @@ public class Player : MonoBehaviour
         if(ListElement == -1) return;
 
         ListIndex = PlatformManager._instance.platforms.Count - ListElement -1;
-        currentPlatform = Tools.GetKey(PlatformManager._instance.platforms, ListElement);
+        currentPlatform = PlatformManager._instance.platforms[ListElement].Platform;
     }
 }
