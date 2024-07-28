@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     public string  Name = "Name";
     public int     Index = 0;
-    public int     Health = 5;
+    public int     Health = 9;
     public bool    isSafe = false;
 
     [Space(5)]

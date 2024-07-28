@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 10789.3, g: 16339.119, b: 25021.707, a: 1}
+  m_IndirectSpecularColor: {r: 10790.335, g: 16340.893, b: 25026.238, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player2
   Index: 1
-  Health: 5
+  Health: 9
   isSafe: 0
   ListIndex: 0
   ListElement: 0
@@ -938,6 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672408844}
   - component: {fileID: 672408842}
+  - component: {fileID: 672408846}
   - component: {fileID: 672408843}
   - component: {fileID: 672408845}
   m_Layer: 0
@@ -1083,6 +1084,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platforms: []
+--- !u!114 &672408846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672408841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb2680237a383c4095e471c93a2f399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RocketActive: 0
+  Running: 0
+  rocketTimer: 300
+  rocketTimerDisplay: 
 --- !u!1001 &731562950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1256,7 +1273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player1
   Index: 0
-  Health: 5
+  Health: 9
   isSafe: 0
   ListIndex: 0
   ListElement: 0
@@ -1591,7 +1608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player4
   Index: 3
-  Health: 5
+  Health: 9
   isSafe: 0
   ListIndex: 0
   ListElement: 0
@@ -2016,7 +2033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player3
   Index: 2
-  Health: 5
+  Health: 9
   isSafe: 0
   ListIndex: 0
   ListElement: 0
