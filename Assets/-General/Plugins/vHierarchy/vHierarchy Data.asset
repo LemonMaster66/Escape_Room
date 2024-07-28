@@ -68,6 +68,10 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-347178356-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1191248043-0
         - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-728739094-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-412274904653235720-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-1936814347-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-2051729084-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8124e5870f4fd4c779e7a5f994e84ad1-2084863689-0
         values:
         - colorIndex: 0
           iconNameOrGuid: DirectionalLight Icon
@@ -163,6 +167,14 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 2
           iconNameOrGuid: 
+        - colorIndex: 1
+          iconNameOrGuid: Settings Icon
+        - colorIndex: 6
+          iconNameOrGuid: Favorite
+        - colorIndex: 0
+          iconNameOrGuid: Material Icon
+        - colorIndex: 8
+          iconNameOrGuid: Canvas Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-1-c464da8b19cfa9a4f962415682311144-8740546017553086485-0
